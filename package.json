@@ -13,7 +13,7 @@
 	"activationEvents": [
 		"onCommand:extensions-prioritizer.helloWorld"
 	],
-	"main": "./dist/extension.js",
+	"main": "./dist/extension/extension.js",
 	"contributes": {
 		"commands": [
 			{
@@ -24,13 +24,13 @@
 	},
 	"scripts": {
 		"vscode:prepublish": "yarn run package",
-		"compile": "webpack --devtool nosources-source-map --config ./build/node-extension.webpack.config.js",
-		"watch": "webpack --watch --devtool nosources-source-map --info-verbosity verbose --config ./build/node-extension.webpack.config.js",
-		"package": "webpack --mode production --config ./build/node-extension.webpack.config.js",
+		"compile": "webpack --mode development --devtool nosources-source-map --config ./webpack.config.ts",
+		"watch": "webpack --mode development --watch --devtool nosources-source-map --info-verbosity verbose --config ./webpack.config.ts",
+		"package": "webpack --mode production --config ./webpack.config.ts",
 		"test-compile": "tsc -p ./",
 		"test-watch": "tsc -watch -p ./",
 		"pretest": "yarn run test-compile && yarn run lint",
-		"lint": "eslint src --ext ts",
+		"lint": "eslint \"src/**/*.{js,ts,vue}\"",
 		"test": "node ./out/test/runTest.js"
 	},
 	"devDependencies": {
@@ -48,12 +48,19 @@
 		"eslint-plugin-mocha": "^8.0.0",
 		"eslint-plugin-node": "^11.1.0",
 		"eslint-plugin-promise": "^4.2.1",
+		"eslint-plugin-vue": "^7.1.0",
 		"glob": "^7.1.6",
+		"html-webpack-plugin": "^4.5.0",
 		"mocha": "^8.1.3",
+		"node-sass": "^5.0.0",
+		"sass-loader": "^10.1.0",
 		"ts-loader": "^8.0.3",
+		"ts-node": "^9.0.0",
+		"tsconfig-paths-webpack-plugin": "^3.3.0",
 		"typescript": "^4.1.2",
 		"typescript-is": "^0.17.0",
 		"vscode-test": "^1.4.0",
+		"vue-eslint-parser": "^7.1.1",
 		"vue-loader": "^16.0.0",
 		"webpack": "^4.44.1",
 		"webpack-cli": "^3.3.12"

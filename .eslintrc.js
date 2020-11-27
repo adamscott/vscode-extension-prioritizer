@@ -8,14 +8,16 @@ module.exports = {
     'standard',
     'plugin:mocha/recommended',
     'plugin:@typescript-eslint/recommended',
-    'plugin:@typescript-eslint/recommended-requiring-type-checking'
+    'plugin:@typescript-eslint/recommended-requiring-type-checking',
+    'plugin:vue/vue3-recommended'
   ],
-  parser: '@typescript-eslint/parser',
+  parser: 'vue-eslint-parser',
   parserOptions: {
-    ecmaVersion: 12,
+    parser: '@typescript-eslint/parser',
     sourceType: 'module',
     project: './tsconfig.eslint.json',
-    tsconfigRootDir: __dirname
+    tsconfigRootDir: __dirname,
+    extraFileExtensions: ['.vue']
   },
   plugins: [
     '@typescript-eslint',

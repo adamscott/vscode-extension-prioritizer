@@ -8,10 +8,15 @@
 		],
 		"sourceMap": true,
     "rootDir": ".",
+    "baseUrl": "src",
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
-    "baseUrl": ".",
     "moduleResolution": "node",
+    "paths": {
+      "@/*": [ "*" ],
+      "@ext/*": [ "extension/*" ],
+      "@view/*": [ "view/*" ]
+    },
     "strict": true   /* enable all strict type-checking options */
 		/* Additional Checks */
 		// "noImplicitReturns": true, /* Report error when not all code paths in function return a value. */
