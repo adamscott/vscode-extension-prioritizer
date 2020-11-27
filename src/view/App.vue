@@ -12,12 +12,12 @@
 <script lang="ts">
 import { defineComponent } from 'vue'
 
-import { vscode } from '@view/modules/vscode'
+import { postMessage } from '@view/modules/vscode'
 
 export default defineComponent({
   methods: {
     onClick () {
-      vscode.postMessage({
+      postMessage({
         type: 'echo',
         value: 'Hello from Vue!'
       })
