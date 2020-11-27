@@ -15,7 +15,7 @@
     "moduleResolution": "node",
     "paths": {
       "@/*": [ "*" ],
-      "@ext/*": [ "extension/*" ],
+      "@extension/*": [ "extension/*" ],
       "@view/*": [ "view/*" ]
     },
     "strict": true   /* enable all strict type-checking options */
@@ -27,6 +27,7 @@
 	"exclude": [
 		"node_modules",
     ".vscode-test",
-    "dist"
+    "dist",
+    "resources"
 	]
 }
