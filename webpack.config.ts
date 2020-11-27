@@ -8,7 +8,15 @@ import { VueLoaderPlugin } from 'vue-loader'
 import transcriptIsTransformer from 'typescript-is/lib/transform-inline/transformer'
 
 const commonConfig: Configuration = {
-
+  devtool: 'source-map',
+  resolve: {
+    extensions: ['.ts', '.js', '.vue'],
+    plugins: [
+      new TsconfigPathsPlugin({
+        extensions: ['.ts', '.vue']
+      })
+    ]
+  }
 }
 
 const extensionConfig: Configuration = {
@@ -22,17 +30,8 @@ const extensionConfig: Configuration = {
     libraryTarget: 'commonjs2',
     devtoolModuleFilenameTemplate: '../../[resource-path]'
   },
-  devtool: 'source-map',
   externals: {
     vscode: 'commonjs vscode'
-  },
-  resolve: {
-    extensions: ['.ts', '.js'],
-    plugins: [
-      new TsconfigPathsPlugin({
-        extensions: ['.ts']
-      })
-    ]
   },
   module: {
     rules: [
@@ -43,7 +42,7 @@ const extensionConfig: Configuration = {
           {
             loader: 'ts-loader',
             options: {
-              getCustomTransformers: (program: Program): { before: TransformerFactory<SourceFile>[] } => ({
+              getCustomTransformers: (program: Program): { before: Array<TransformerFactory<SourceFile>> } => ({
                 before: [transcriptIsTransformer(program)]
               })
             }
@@ -51,7 +50,8 @@ const extensionConfig: Configuration = {
         ]
       }
     ]
-  }
+  },
+  ...commonConfig
 }
 
 const viewConfig: Configuration = {
@@ -65,15 +65,6 @@ const viewConfig: Configuration = {
     libraryTarget: 'commonjs2',
     devtoolModuleFilenameTemplate: '../../[resource-path]'
   },
-  devtool: 'source-map',
-  resolve: {
-    extensions: ['.ts', '.js', '.vue'],
-    plugins: [
-      new TsconfigPathsPlugin({
-        extensions: ['.ts', '.vue']
-      })
-    ]
-  },
   module: {
     rules: [
       {
@@ -83,7 +74,7 @@ const viewConfig: Configuration = {
           {
             loader: 'ts-loader',
             options: {
-              getCustomTransformers: (program: Program): { before: TransformerFactory<SourceFile>[] } => ({
+              getCustomTransformers: (program: Program): { before: Array<TransformerFactory<SourceFile>> } => ({
                 before: [transcriptIsTransformer(program)]
               }),
               appendTsSuffixTo: [/\.vue$/u]
@@ -120,7 +111,8 @@ const viewConfig: Configuration = {
       title: 'Extension Prioritizer Webview View',
       template: 'src/view/assets/index.ejs'
     })
-  ]
+  ],
+  ...commonConfig
 }
 
 export default [

@@ -5,10 +5,8 @@ module.exports = {
     node: true
   },
   extends: [
-    'standard',
+    'standard-with-typescript',
     'plugin:mocha/recommended',
-    'plugin:@typescript-eslint/recommended',
-    'plugin:@typescript-eslint/recommended-requiring-type-checking',
     'plugin:vue/vue3-recommended'
   ],
   parser: 'vue-eslint-parser',
@@ -20,7 +18,6 @@ module.exports = {
     extraFileExtensions: ['.vue']
   },
   plugins: [
-    '@typescript-eslint',
     'mocha'
   ],
   rules: {
