@@ -117,7 +117,7 @@ const viewConfig: Configuration = {
         viewport: 'width=device-width, initial-scale=1, shrink-to-fit=no'
       },
       scriptLoading: 'defer',
-      title: 'Extensions Prioritizer Webview View',
+      title: 'Extension Prioritizer Webview View',
       template: 'src/view/assets/index.ejs'
     })
   ]
