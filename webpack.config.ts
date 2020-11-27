@@ -1,11 +1,10 @@
 import type { Program, TransformerFactory, SourceFile } from 'typescript'
-import type { Configuration } from 'webpack'
 
 import path from 'path'
-import HtmlWebpackPlugin from 'html-webpack-plugin'
 import { TsconfigPathsPlugin } from 'tsconfig-paths-webpack-plugin'
-import { VueLoaderPlugin } from 'vue-loader'
 import transcriptIsTransformer from 'typescript-is/lib/transform-inline/transformer'
+import { VueLoaderPlugin } from 'vue-loader'
+import { Configuration, DefinePlugin } from 'webpack'
 
 const commonConfig: Configuration = {
   devtool: 'source-map',
@@ -62,7 +61,7 @@ const viewConfig: Configuration = {
   output: {
     path: path.resolve(__dirname, 'dist', 'view'),
     filename: '[name].js',
-    libraryTarget: 'commonjs2',
+    libraryTarget: 'umd',
     devtoolModuleFilenameTemplate: '../../[resource-path]'
   },
   module: {
@@ -102,20 +101,15 @@ const viewConfig: Configuration = {
   },
   plugins: [
     new VueLoaderPlugin(),
-    new HtmlWebpackPlugin({
-      inject: false,
-      meta: {
-        viewport: 'width=device-width, initial-scale=1, shrink-to-fit=no'
-      },
-      scriptLoading: 'defer',
-      title: 'Extension Prioritizer Webview View',
-      template: 'src/view/assets/index.ejs'
+    new DefinePlugin({
+      __VUE_OPTIONS_API__: JSON.stringify(true),
+      __VUE_PROD_DEVTOOLS__: JSON.stringify(false)
     })
   ],
   ...commonConfig
 }
 
 export default [
-  extensionConfig,
-  viewConfig
+  viewConfig,
+  extensionConfig
 ]

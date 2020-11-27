@@ -37,14 +37,7 @@
           "name": "Extension Prioritizer"
         }
       ]
-    },
-    "commands": [
-      {
-        "command": "extension-prioritizer.show",
-        "title": "Extension Prioritizer: Show",
-        "description": "Description"
-      }
-    ]
+    }
   },
   "scripts": {
     "vscode:prepublish": "yarn run package",

@@ -21,5 +21,8 @@ module.exports = {
     'mocha'
   ],
   rules: {
+  },
+  globals: {
+    acquireVsCodeApi: true
   }
 }
