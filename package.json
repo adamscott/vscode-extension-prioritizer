@@ -24,13 +24,19 @@
       "activitybar": [
         {
           "id": "extension-prioritizer",
-          "title": "Package Explorer",
-          "icon": "resources/package-explorer.svg"
+          "title": "Extension Prioritizer",
+          "icon": "resources/dep.svg"
         }
       ]
     },
     "views": {
-
+      "extension-prioritizer": [
+        {
+          "type": "webview",
+          "id": "extension-prioritizer.view",
+          "name": "Extension Prioritizer"
+        }
+      ]
     },
     "commands": [
       {
