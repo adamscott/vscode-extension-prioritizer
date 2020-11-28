@@ -1,14 +1,21 @@
 (function() {
-  const borderElement = document.getElementById("ep-border")
+  document.body.style.outline = '1px solid transparent'
+  document.body.style.outlineOffset = '-1px'
 
   function onFocus () {
-    borderElement.style.visibility = 'visible'
+    if (document.activeElement === document.body) {
+      document.body.style.outlineColor = 'var(--vscode-focusBorder)'
+    }
   }
 
   function onBlur () {
-    borderElement.style.visibility = 'hidden'
+    if (document.activeElement === document.body) {
+      document.body.style.outlineColor = 'transparent'
+    }
   }
 
   window.addEventListener('focus', onFocus)
   window.addEventListener('blur', onBlur)
+  document.body.addEventListener('mousedown', onBlur)
+  document.body.addEventListener('mouseup', onFocus)
 })()

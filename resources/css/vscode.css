@@ -10,28 +10,28 @@ html,
 body,
 #ep-container {
   height: 100%;
+  width: 100%;
+  user-select: none;
 }
 
 html,
 body {
-  overflow-y: overlay;
+  color: var(--vscode-foreground);
+  font-size: var(--vscode-font-size);
+  font-weight: var(--vscode-font-weight);
+  font-family: var(--vscode-font-family);
   padding: 0;
   margin: 0;
 }
 
 #ep-container {
   position: relative;
-  padding: 0 var(--container-paddding);
-  color: var(--vscode-foreground);
-  font-size: var(--vscode-font-size);
-  font-weight: var(--vscode-font-weight);
-  font-family: var(--vscode-font-family);
-  height: 100%;
-  width: 100%;
+  padding: calc(var(--container-paddding) / 2) var(--container-paddding);
   overflow-y: overlay;
 }
 
 #ep-border {
+  pointer-events: none;
   border: 1px solid var(--vscode-focusBorder);
   position: absolute;
   width: 100%;
@@ -87,6 +87,11 @@ button:hover {
 
 button:focus {
   outline-color: var(--vscode-focusBorder);
+}
+
+button:focus:hover {
+  outline: 0;
+  outline: 1px solid transparent !important;
 }
 
 button.secondary {

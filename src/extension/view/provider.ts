@@ -83,7 +83,6 @@ export class ExtensionPrioritizerViewProvider implements WebviewViewProvider {
         <div id="ep-container">
           <div id="app"></div>
         </div>
-        <div id="ep-border"></div>
       </body>
     </html>`
   }
