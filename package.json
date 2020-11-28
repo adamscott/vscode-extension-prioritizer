@@ -20,6 +20,16 @@
   },
   "main": "./dist/extension/extension.js",
   "contributes": {
+    "commands": [
+      {
+        "command": "extension-prioritizer.refresh",
+        "title": "Refresh",
+        "icon": {
+          "light": "resources/svg/light/refresh.svg",
+          "dark": "resources/svg/dark/refresh.svg"
+        }
+      }
+    ],
     "viewsContainers": {
       "activitybar": [
         {
@@ -35,6 +45,15 @@
           "type": "webview",
           "id": "extension-prioritizer.view",
           "name": "Extension Prioritizer"
+        }
+      ]
+    },
+    "menus": {
+      "view/title": [
+        {
+          "command": "extension-prioritizer.refresh",
+          "when": "view == extension-prioritizer.view",
+          "group": "navigation"
         }
       ]
     }

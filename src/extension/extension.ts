@@ -24,6 +24,9 @@ export function activate (context: ExtensionContext): void {
   context.subscriptions.push(
     window.registerWebviewViewProvider(ExtensionPrioritizerViewProvider.viewType, provider)
   )
+
+  commands.registerCommand('extension-prioritizer.refresh', () => ( console.log('refresh') ))
+
 }
 
 // eslint-disable-next-line @typescript-eslint/no-empty-function
