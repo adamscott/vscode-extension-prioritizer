@@ -3,11 +3,12 @@
     <h1 class="title">
       Vue app
     </h1>
-    <input
-      value="Hello, World"
-      type="button"
-      @click="onClick"
-    >
+    <p>
+      Test of <span class="yo">color</span>
+    </p>
+    <button @click="onClick">
+      Hello, World
+    </button>
   </div>
 </template>
 
@@ -26,8 +27,8 @@ export default defineComponent({
     },
     onClick () {
       postMessage({
-        type: 'echo',
-        value: 'Hello from Vue!'
+        type: 'button-click',
+        value: ''
       })
     },
     onFocus (ev: FocusEvent): any {
@@ -40,5 +41,9 @@ export default defineComponent({
 <style lang="scss">
 .title {
   color: blue;
+}
+
+.yo {
+  color: red;
 }
 </style>

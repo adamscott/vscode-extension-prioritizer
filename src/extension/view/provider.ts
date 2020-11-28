@@ -52,7 +52,7 @@ export class ExtensionPrioritizerViewProvider implements WebviewViewProvider {
     // Do the same for the stylesheet.
     const styleResetUri = webview.asWebviewUri(Uri.joinPath(this._extensionUri, 'resources', 'css', 'reset.css'))
     const styleVSCodeUri = webview.asWebviewUri(Uri.joinPath(this._extensionUri, 'resources', 'css', 'vscode.css'))
-    const styleMainUri = webview.asWebviewUri(Uri.joinPath(this._extensionUri, 'media', 'main.css'))
+    const styleMainUri = webview.asWebviewUri(Uri.joinPath(this._extensionUri, 'dist', 'view', 'style.css'))
 
     // Use a nonce to only allow a specific script to be run.
     const nonce = getNonce()
